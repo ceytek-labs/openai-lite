@@ -8,17 +8,14 @@ class ModelsList
 
     private string $key;
 
-    private string $method;
-
     private \stdClass $response;
 
-    public static function make(string $api, string $key, string $method)
+    public static function make(string $api, string $key)
     {
         $instance = new self;
 
         $instance->api = $api;
         $instance->key = $key;
-        $instance->method = $method;
 
         return $instance;
     }
@@ -28,7 +25,7 @@ class ModelsList
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => $this->api.$this->method,
+            CURLOPT_URL => $this->api.'/models',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTPHEADER => [
                 'Authorization: Bearer ' . $this->key,

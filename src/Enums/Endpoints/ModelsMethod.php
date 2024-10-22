@@ -2,7 +2,8 @@
 
 namespace CeytekLabs\OpenAI\Enums\Endpoints;
 
-enum ModelsMethod: string
+enum ModelsMethod
 {
-    case List = '/models';
+    case List;
+    case Retrieve;
 }

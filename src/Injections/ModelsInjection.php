@@ -12,7 +12,7 @@ class ModelsInjection
         $api = 'https://api.openai.com/v1';
 
         if ($method === ModelsMethod::List) {
-            return ModelsList::make($api, $key, $method->value);
+            return ModelsList::make($api, $key);
         }
 
         throw new \Exception('This method does not available');
