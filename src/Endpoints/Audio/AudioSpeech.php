@@ -2,8 +2,10 @@
 
 namespace CeytekLabs\OpenAI\Endpoints\Audio;
 
-use CeytekLabs\OpenAI\Enums\Model;
-use CeytekLabs\OpenAI\Enums\Voice;
+use CeytekLabs\OpenAI\Enums\Audio\ResponseFormat;
+use CeytekLabs\OpenAI\Enums\Audio\Speed;
+use CeytekLabs\OpenAI\Enums\Audio\TTSModel;
+use CeytekLabs\OpenAI\Enums\Audio\Voice;
 
 class AudioSpeech
 {
@@ -11,11 +13,15 @@ class AudioSpeech
 
     private string $key;
 
-    private Model $model;
+    private TTSModel $model;
 
     private string $input;
 
     private Voice $voice;
+
+    private ResponseFormat $responseFormat = ResponseFormat::Mp3;
+
+    private Speed $speed = Speed::Normal;
 
     private \stdClass $response;
 
@@ -29,7 +35,7 @@ class AudioSpeech
         return $instance;
     }
 
-    public function setModel(Model $model): self
+    public function setModel(TTSModel $model): self
     {
         $this->model = $model;
 
@@ -50,9 +56,26 @@ class AudioSpeech
         return $this;
     }
 
+    public function setResponseFormat(ResponseFormat $responseFormat): self
+    {
+        $this->responseFormat = $responseFormat;
+
+        return $this;
+    }
+
+    public function setSpeed(Speed $speed): self
+    {
+        $this->speed = $speed;
+
+        return $this;
+    }
+
     public function ask(string $directory = 'speeches', string $filename = 'speech1'): self
     {
-        $fields = [];
+        $fields = [
+            'response_format' => $this->responseFormat->value,
+            'speed' => $this->speed->value,
+        ];
 
         if (! isset($this->model)) {
             throw new \Exception('Please set your model');
@@ -92,9 +115,11 @@ class AudioSpeech
 
         curl_close($curl);
 
-        mkdir($directory, 0777, true);
+        if (! is_dir($directory)) {
+            mkdir($directory, 0777, true);
+        }
 
-        $path = $directory.'/'.$filename.'.mp3';
+        $path = $directory.'/'.$filename.'.'.$this->responseFormat->value;
 
         $outputFile = fopen($path, 'w');
 

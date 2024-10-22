@@ -1,6 +1,6 @@
 <?php
 
-namespace CeytekLabs\OpenAI\Enums;
+namespace CeytekLabs\OpenAI\Enums\Audio;
 
 enum Voice: string
 {
