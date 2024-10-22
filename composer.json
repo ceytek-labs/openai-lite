@@ -1,0 +1,19 @@
+{
+    "name": "ceytek-labs/openai",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "CeytekLabs\\OpenAI\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ceyhun-celik",
+            "email": "ceyhuniverse@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1"
+    }
+}
