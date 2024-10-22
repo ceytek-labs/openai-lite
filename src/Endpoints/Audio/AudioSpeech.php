@@ -2,7 +2,7 @@
 
 namespace CeytekLabs\OpenAI\Endpoints\Audio;
 
-use CeytekLabs\OpenAI\Enums\Audio\ResponseFormat;
+use CeytekLabs\OpenAI\Enums\Audio\Speech\ResponseFormat;
 use CeytekLabs\OpenAI\Enums\Audio\Speed;
 use CeytekLabs\OpenAI\Enums\Audio\TTSModel;
 use CeytekLabs\OpenAI\Enums\Audio\Voice;
