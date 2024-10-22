@@ -1,8 +1,8 @@
 <?php
 
-namespace CeytekLabs\OpenAI\Enums\Audio\Speech;
+namespace CeytekLabs\OpenAI\Enums\Audio;
 
-enum ResponseFormat: string
+enum SoundResponseFormat: string
 {
     case Mp3 = 'mp3';
     case Opus = 'opus';

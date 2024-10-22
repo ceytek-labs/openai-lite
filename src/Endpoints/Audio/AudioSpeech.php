@@ -2,7 +2,7 @@
 
 namespace CeytekLabs\OpenAI\Endpoints\Audio;
 
-use CeytekLabs\OpenAI\Enums\Audio\Speech\ResponseFormat;
+use CeytekLabs\OpenAI\Enums\Audio\SoundResponseFormat;
 use CeytekLabs\OpenAI\Enums\Audio\Speed;
 use CeytekLabs\OpenAI\Enums\Audio\TTSModel;
 use CeytekLabs\OpenAI\Enums\Audio\Voice;
@@ -19,7 +19,7 @@ class AudioSpeech
 
     private Voice $voice;
 
-    private ResponseFormat $responseFormat = ResponseFormat::Mp3;
+    private SoundResponseFormat $responseFormat = SoundResponseFormat::Mp3;
 
     private Speed $speed = Speed::Normal;
 
@@ -56,7 +56,7 @@ class AudioSpeech
         return $this;
     }
 
-    public function setResponseFormat(ResponseFormat $responseFormat): self
+    public function setResponseFormat(SoundResponseFormat $responseFormat): self
     {
         $this->responseFormat = $responseFormat;
 

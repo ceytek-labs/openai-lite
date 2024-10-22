@@ -2,7 +2,7 @@
 
 namespace CeytekLabs\OpenAI\Endpoints\Audio;
 
-use CeytekLabs\OpenAI\Enums\Audio\Transcription\ResponseFormat;
+use CeytekLabs\OpenAI\Enums\Audio\ScriptResponseFormat;
 use CeytekLabs\OpenAI\Enums\Audio\WhisperModel;
 
 class AudioTranscription
@@ -15,7 +15,7 @@ class AudioTranscription
 
     private WhisperModel $model = WhisperModel::WHISPER_1;
 
-    private ResponseFormat $responseFormat = ResponseFormat::Json;
+    private ScriptResponseFormat $responseFormat = ScriptResponseFormat::Json;
 
     private \stdClass|string $response;
 
@@ -43,7 +43,7 @@ class AudioTranscription
         return $this;
     }
 
-    public function setResponseFormat(ResponseFormat $responseFormat): self
+    public function setResponseFormat(ScriptResponseFormat $responseFormat): self
     {
         $this->responseFormat = $responseFormat;
 
@@ -89,7 +89,7 @@ class AudioTranscription
 
         curl_close($curl);
 
-        $this->response = $this->responseFormat === ResponseFormat::Json
+        $this->response = $this->responseFormat === ScriptResponseFormat::Json
             ? json_decode($response)
             : $response;
 
@@ -111,7 +111,7 @@ class AudioTranscription
             throw new \Exception('Please ask first');
         }
 
-        if ($this->responseFormat !== ResponseFormat::Json) {
+        if ($this->responseFormat !== ScriptResponseFormat::Json) {
             throw new \Exception('Please set your response format as Json');
         }
 

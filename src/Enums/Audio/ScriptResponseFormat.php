@@ -1,8 +1,8 @@
 <?php
 
-namespace CeytekLabs\OpenAI\Enums\Audio\Transcription;
+namespace CeytekLabs\OpenAI\Enums\Audio;
 
-enum ResponseFormat: string
+enum ScriptResponseFormat: string
 {
     case Json = 'json';
     case Text = 'text';
