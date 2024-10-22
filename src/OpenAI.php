@@ -2,6 +2,7 @@
 
 namespace CeytekLabs\OpenAI;
 
+use CeytekLabs\OpenAI\Endpoints\Audio\AudioSpeech;
 use CeytekLabs\OpenAI\Endpoints\Chat\ChatCreate;
 use CeytekLabs\OpenAI\Endpoints\Model\ModelList;
 use CeytekLabs\OpenAI\Endpoints\Model\ModelRetrieve;
@@ -23,6 +24,11 @@ class OpenAI
         $instance->key = $key;
 
         return $instance;
+    }
+
+    public function audioSpeech(): AudioSpeech
+    {
+        return AudioSpeech::make($this->api, $this->key);
     }
 
     public function chatCreate(): ChatCreate

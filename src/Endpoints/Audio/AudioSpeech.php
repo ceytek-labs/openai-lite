@@ -1,10 +1,11 @@
 <?php
 
-namespace CeytekLabs\OpenAI\Endpoints\Chat;
+namespace CeytekLabs\OpenAI\Endpoints\Audio;
 
 use CeytekLabs\OpenAI\Enums\Model;
+use CeytekLabs\OpenAI\Enums\Voice;
 
-class ChatCreate
+class AudioSpeech
 {
     private string $api;
 
@@ -12,7 +13,9 @@ class ChatCreate
 
     private Model $model;
 
-    private string $behave;
+    private string $input;
+
+    private Voice $voice;
 
     private \stdClass $response;
 
@@ -33,14 +36,21 @@ class ChatCreate
         return $this;
     }
 
-    public function setBehave(string $content): self
+    public function setInput(string $content): self
     {
-        $this->behave = $content;
+        $this->input = $content;
 
         return $this;
     }
 
-    public function ask(string $content = null): self
+    public function setVoice(Voice $voice): self
+    {
+        $this->voice = $voice;
+
+        return $this;
+    }
+
+    public function ask(string $directory = 'speeches', string $filename = 'speech1'): self
     {
         $fields = [];
 
@@ -50,26 +60,22 @@ class ChatCreate
 
         $fields['model'] = $this->model->value;
 
-        if (is_null($content)) {
-            throw new \Exception('Please insert your content');
+        if (! isset($this->input)) {
+            throw new \Exception('Please set your input');
         }
 
-        $fields['messages'][] = [
-            'role' => 'user',
-            'content' => $content,
-        ];
+        $fields['input'] = $this->input;
 
-        if (isset($this->behave)) {
-            $fields['messages'][] = [
-                'role' => 'system',
-                'content' => $this->behave,
-            ];
+        if (! isset($this->voice)) {
+            throw new \Exception('Please set your voice');
         }
+
+        $fields['voice'] = $this->voice->value;
 
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => $this->api.'/chat/completions',
+            CURLOPT_URL => $this->api.'/audio/speech',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/json',
@@ -86,7 +92,18 @@ class ChatCreate
 
         curl_close($curl);
 
-        $this->response = json_decode($response);
+        mkdir($directory, 0777, true);
+
+        $path = $directory.'/'.$filename.'.mp3';
+
+        $outputFile = fopen($path, 'w');
+
+        fwrite($outputFile, $response);
+        fclose($outputFile);
+
+        $this->response = new \stdClass();
+        $this->response->message = 'speech created successfully';
+        $this->response->path = $path;
 
         return $this;
     }
