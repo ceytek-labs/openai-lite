@@ -1,8 +1,8 @@
 <?php
 
-namespace CeytekLabs\OpenAI\Injections\Models;
+namespace CeytekLabs\OpenAI\Endpoints\Model;
 
-class ModelsList
+class ModelList
 {
     private string $api;
 

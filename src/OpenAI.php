@@ -2,14 +2,14 @@
 
 namespace CeytekLabs\OpenAI;
 
-use CeytekLabs\OpenAI\Enums\Endpoints\ChatMethod;
-use CeytekLabs\OpenAI\Enums\Endpoints\ModelsMethod;
-use CeytekLabs\OpenAI\Injections\ChatInjection;
-use CeytekLabs\OpenAI\Injections\Models\ModelsList;
-use CeytekLabs\OpenAI\Injections\ModelsInjection;
+use CeytekLabs\OpenAI\Endpoints\Chat\ChatCreate;
+use CeytekLabs\OpenAI\Endpoints\Model\ModelList;
+use CeytekLabs\OpenAI\Endpoints\Model\ModelRetrieve;
 
 class OpenAI
 {
+    private string $api = 'https://api.openai.com/v1';
+
     private string $key;
 
     public static function make(string $key = null): self
@@ -25,14 +25,18 @@ class OpenAI
         return $instance;
     }
 
-    public function setMethod(ChatMethod|ModelsMethod $method)
+    public function chatCreate(): ChatCreate
     {
-        if ($method instanceof ChatMethod) {
-            return ChatInjection::make($this->key, $method);
-        }
+        return ChatCreate::make($this->api, $this->key);
+    }
 
-        if ($method instanceof ModelsMethod) {
-            return ModelsInjection::make($this->key, $method);
-        }
+    public function modelList(): ModelList
+    {
+        return ModelList::make($this->api, $this->key);
+    }
+
+    public function modelRetrieve(): ModelRetrieve
+    {
+        return ModelRetrieve::make($this->api, $this->key);
     }
 }

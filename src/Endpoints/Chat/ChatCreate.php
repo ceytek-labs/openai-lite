@@ -1,8 +1,7 @@
 <?php
 
-namespace CeytekLabs\OpenAI\Injections\Chat;
+namespace CeytekLabs\OpenAI\Endpoints\Chat;
 
-use CeytekLabs\OpenAI\Enums\Endpoints\ChatMethod;
 use CeytekLabs\OpenAI\Enums\Model;
 
 class ChatCreate
@@ -10,8 +9,6 @@ class ChatCreate
     private string $api;
 
     private string $key;
-
-    private ChatMethod $method = ChatMethod::Create;
 
     private Model $model;
 
@@ -72,7 +69,7 @@ class ChatCreate
         $curl = curl_init();
 
         curl_setopt_array($curl, [
-            CURLOPT_URL => $this->api.$this->method->value,
+            CURLOPT_URL => $this->api.'/chat/completions',
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_HTTPHEADER => [
                 'Content-Type: application/json',
