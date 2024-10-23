@@ -3,6 +3,7 @@
 namespace CeytekLabs\OpenAI\Endpoints;
 
 use CeytekLabs\OpenAI\Endpoints\Chat\CreateCompletion;
+use CeytekLabs\OpenAI\Endpoints\Chat\CreateImageCompletion;
 
 class ChatEndpoint
 {
@@ -23,5 +24,10 @@ class ChatEndpoint
     public function createCompletion(): CreateCompletion
     {
         return CreateCompletion::make($this->api, $this->key);
+    }
+
+    public function createImageCompletion(): CreateImageCompletion
+    {
+        return CreateImageCompletion::make($this->api, $this->key);
     }
 }
