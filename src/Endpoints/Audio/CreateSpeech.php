@@ -70,7 +70,7 @@ class CreateSpeech
         return $this;
     }
 
-    public function ask(string $directory = 'speeches', string $filename = 'speech1'): self
+    public function ask(string $outputDirectory = 'speeches', string $filename = 'speech1'): self
     {
         $fields = [
             'response_format' => $this->responseFormat->value,
@@ -115,11 +115,11 @@ class CreateSpeech
 
         curl_close($curl);
 
-        if (! is_dir($directory)) {
-            mkdir($directory, 0777, true);
+        if (! is_dir($outputDirectory)) {
+            mkdir($outputDirectory, 0777, true);
         }
 
-        $path = $directory.'/'.$filename.'.'.$this->responseFormat->value;
+        $path = $outputDirectory.'/'.$filename.'.'.$this->responseFormat->value;
 
         $outputFile = fopen($path, 'w');
 
