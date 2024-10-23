@@ -42,9 +42,9 @@ class CreateSpeech
         return $this;
     }
 
-    public function setInput(string $content): self
+    public function setInput(string $input): self
     {
-        $this->input = $content;
+        $this->input = $input;
 
         return $this;
     }

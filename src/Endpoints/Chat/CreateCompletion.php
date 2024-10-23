@@ -12,7 +12,7 @@ class CreateCompletion
 
     private Model $model;
 
-    private string $behave;
+    private string $behaveContent;
 
     private \stdClass $response;
 
@@ -33,9 +33,9 @@ class CreateCompletion
         return $this;
     }
 
-    public function setBehave(string $content): self
+    public function setBehave(string $behaveContent): self
     {
-        $this->behave = $content;
+        $this->behaveContent = $behaveContent;
 
         return $this;
     }
@@ -59,10 +59,10 @@ class CreateCompletion
             'content' => $content,
         ];
 
-        if (isset($this->behave)) {
+        if (isset($this->behaveContent)) {
             $fields['messages'][] = [
                 'role' => 'system',
-                'content' => $this->behave,
+                'content' => $this->behaveContent,
             ];
         }
 
