@@ -5,7 +5,7 @@ namespace CeytekLabs\OpenAI\Endpoints\Audio;
 use CeytekLabs\OpenAI\Enums\Audio\ScriptResponseFormat;
 use CeytekLabs\OpenAI\Enums\Audio\WhisperModel;
 
-class AudioTranscription
+class CreateTranscription
 {
     private string $api;
 

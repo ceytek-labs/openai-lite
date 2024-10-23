@@ -7,7 +7,7 @@ use CeytekLabs\OpenAI\Enums\Audio\Speed;
 use CeytekLabs\OpenAI\Enums\Audio\TTSModel;
 use CeytekLabs\OpenAI\Enums\Audio\Voice;
 
-class AudioSpeech
+class CreateSpeech
 {
     private string $api;
 

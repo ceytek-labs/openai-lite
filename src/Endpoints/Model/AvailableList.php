@@ -2,7 +2,7 @@
 
 namespace CeytekLabs\OpenAI\Endpoints\Model;
 
-class ModelList
+class AvailableList
 {
     private string $api;
 

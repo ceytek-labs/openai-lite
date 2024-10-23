@@ -3,7 +3,9 @@
 use CeytekLabs\OpenAI\OpenAI;
 
 try {
-    $openai = OpenAI::make($key)->modelList()
+    $openai = OpenAI::make($key)
+        ->model()
+        ->availableList()
         ->ask();
 
     print_r($openai->getResponse());

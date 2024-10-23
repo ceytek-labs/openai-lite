@@ -4,7 +4,7 @@ namespace CeytekLabs\OpenAI\Endpoints\Model;
 
 use CeytekLabs\OpenAI\Enums\Model;
 
-class ModelRetrieve
+class Retrieve
 {
     private string $api;
 

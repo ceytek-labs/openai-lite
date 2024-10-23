@@ -4,7 +4,7 @@ namespace CeytekLabs\OpenAI\Endpoints\Chat;
 
 use CeytekLabs\OpenAI\Enums\Model;
 
-class ChatCreate
+class CreateCompletion
 {
     private string $api;
 
