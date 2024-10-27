@@ -1,19 +1,37 @@
 {
     "name": "ceytek-labs/openai",
+    "description": "A lightweight library for seamless integration with the OpenAI API in PHP.",
+    "keywords": [
+        "OpenAI",
+        "API",
+        "ChatGPT",
+        "Text to Speech",
+        "Transcription",
+        "Image Recognition",
+        "PHP",
+        "lite library",
+        "AI"
+    ],
+    "homepage": "https://github.com/ceytek-labs/openai",
     "type": "library",
     "license": "MIT",
+    "authors": [
+        {
+            "name": "ceyhun-celik",
+            "email": "ceyhunbcelik@icloud.com",
+            "role": "Developer"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "CeytekLabs\\OpenAI\\": "src/"
         }
     },
-    "authors": [
-        {
-            "name": "ceyhun-celik",
-            "email": "ceyhuniverse@gmail.com"
-        }
-    ],
     "require": {
         "php": "^8.1"
+    },
+    "support": {
+        "issues": "https://github.com/ceytek-labs/openai/issues",
+        "source": "https://github.com/ceytek-labs/openai"
     }
 }
