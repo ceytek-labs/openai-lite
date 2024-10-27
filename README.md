@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/ceytek-labs/openai/refs/heads/1.x/art/banner.png" width="400" alt="Google Services Lite">
+    <img src="https://raw.githubusercontent.com/ceytek-labs/openai/refs/heads/0.x/art/banner.png" width="400" alt="OpenAI - ChatGPT API Library">
     <p align="center">
         <a href="https://packagist.org/packages/ceytek-labs/openai"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/ceytek-labs/openai"></a>
         <a href="https://packagist.org/packages/ceytek-labs/openai"><img alt="Latest Version" src="https://img.shields.io/packagist/v/ceytek-labs/openai"></a>
