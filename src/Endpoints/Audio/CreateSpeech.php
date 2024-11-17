@@ -2,10 +2,10 @@
 
 namespace CeytekLabs\OpenAI\Endpoints\Audio;
 
-use CeytekLabs\OpenAI\Enums\Audio\SoundResponseFormat;
-use CeytekLabs\OpenAI\Enums\Audio\Speed;
-use CeytekLabs\OpenAI\Enums\Audio\TTSModel;
-use CeytekLabs\OpenAI\Enums\Audio\Voice;
+use CeytekLabs\OpenAI\Enums\SoundResponseFormat;
+use CeytekLabs\OpenAI\Enums\Speed;
+use CeytekLabs\OpenAI\Enums\TTSModel;
+use CeytekLabs\OpenAI\Enums\Voice;
 
 class CreateSpeech
 {

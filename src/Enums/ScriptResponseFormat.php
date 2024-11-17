@@ -1,6 +1,6 @@
 <?php
 
-namespace CeytekLabs\OpenAI\Enums\Audio;
+namespace CeytekLabs\OpenAI\Enums;
 
 enum ScriptResponseFormat: string
 {

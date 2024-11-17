@@ -56,8 +56,8 @@ This feature allows you to convert text to speech using a specified TTS model an
 
 ```php
 use CeytekLabs\OpenAI\OpenAI;
-use CeytekLabs\OpenAI\Enums\Audio\TTSModel;
-use CeytekLabs\OpenAI\Enums\Audio\Voice;
+use CeytekLabs\OpenAI\Enums\TTSModel;
+use CeytekLabs\OpenAI\Enums\Voice;
 
 try {
     $openai = OpenAI::make($key)

@@ -2,8 +2,8 @@
 
 namespace CeytekLabs\OpenAI\Endpoints\Audio;
 
-use CeytekLabs\OpenAI\Enums\Audio\ScriptResponseFormat;
-use CeytekLabs\OpenAI\Enums\Audio\WhisperModel;
+use CeytekLabs\OpenAI\Enums\ScriptResponseFormat;
+use CeytekLabs\OpenAI\Enums\WhisperModel;
 
 class CreateTranscription
 {
