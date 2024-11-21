@@ -60,7 +60,7 @@ use CeytekLabs\OpenAI\Enums\TTSModel;
 use CeytekLabs\OpenAI\Enums\Voice;
 
 try {
-    $openai = OpenAI::make($key)
+    $openai = OpenAI::make('<your-key-here>')
         ->audio()
         ->createSpeech()
         ->setModel(TTSModel::TTS_1)
@@ -84,7 +84,7 @@ This function transcribes audio files into text, accepting various audio formats
 use CeytekLabs\OpenAI\OpenAI;
 
 try {
-    $openai = OpenAI::make($key)
+    $openai = OpenAI::make('<your-key-here>')
         ->audio()
         ->createTranscription()
         ->setFile(__DIR__.'/speeches/speech1.mp3')
@@ -117,11 +117,11 @@ use CeytekLabs\OpenAI\OpenAI;
 use CeytekLabs\OpenAI\Enums\Model;
 
 try {
-    $openai = OpenAI::make($key)
+    $openai = OpenAI::make('<your-key-here>')
         ->chat()
         ->createCompletion()
         ->setModel(Model::GPT_3_5_TURBO_0125)
-        ->setBehave('give your answer as json and keep it simple')
+        ->setPrompt('give your answer as json and keep it simple')
         ->ask('What is your name');
 
     print_r($openai->getResponse());
@@ -141,7 +141,7 @@ use CeytekLabs\OpenAI\OpenAI;
 use CeytekLabs\OpenAI\Enums\Model;
 
 try {
-    $openai = OpenAI::make($key)
+    $openai = OpenAI::make('<your-key-here>')
         ->chat()
         ->createImageCompletion()
         ->setModel(Model::GPT_4_TURBO)
@@ -173,7 +173,7 @@ Retrieve a list of all available models.
 use CeytekLabs\OpenAI\OpenAI;
 
 try {
-    $openai = OpenAI::make($key)
+    $openai = OpenAI::make('<your-key-here>')
         ->model()
         ->availableList()
         ->ask();
@@ -195,7 +195,7 @@ use CeytekLabs\OpenAI\OpenAI;
 use CeytekLabs\OpenAI\Enums\Model;
 
 try {
-    $openai = OpenAI::make($key)
+    $openai = OpenAI::make('<your-key-here>')
         ->model()
         ->retrieve()
         ->ask(Model::GPT_4O_MINI);

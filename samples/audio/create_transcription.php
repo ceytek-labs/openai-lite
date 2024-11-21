@@ -3,7 +3,7 @@
 use CeytekLabs\OpenAI\OpenAI;
 
 try {
-    $openai = OpenAI::make($key)
+    $openai = OpenAI::make('<your-key-here>')
         ->audio()
         ->createTranscription()
         ->setFile(__DIR__.'/speeches/speech1.mp3')

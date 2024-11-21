@@ -4,7 +4,7 @@ use CeytekLabs\OpenAI\OpenAI;
 use CeytekLabs\OpenAI\Enums\Model;
 
 try {
-    $openai = OpenAI::make($key)
+    $openai = OpenAI::make('<your-key-here>')
         ->chat()
         ->createImageCompletion()
         ->setModel(Model::GPT_4_TURBO)

@@ -12,7 +12,7 @@ class CreateCompletion
 
     private Model $model;
 
-    private string $behaveContent;
+    private string $prompt;
 
     private \stdClass $response;
 
@@ -33,9 +33,9 @@ class CreateCompletion
         return $this;
     }
 
-    public function setBehave(string $behaveContent): self
+    public function setPrompt(string $prompt): self
     {
-        $this->behaveContent = $behaveContent;
+        $this->prompt = $prompt;
 
         return $this;
     }
@@ -59,10 +59,10 @@ class CreateCompletion
             'content' => $content,
         ];
 
-        if (isset($this->behaveContent)) {
+        if (isset($this->prompt)) {
             $fields['messages'][] = [
                 'role' => 'system',
-                'content' => $this->behaveContent,
+                'content' => $this->prompt,
             ];
         }
 

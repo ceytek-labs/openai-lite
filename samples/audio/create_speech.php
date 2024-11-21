@@ -5,7 +5,7 @@ use CeytekLabs\OpenAI\Enums\TTSModel;
 use CeytekLabs\OpenAI\Enums\Voice;
 
 try {
-    $openai = OpenAI::make($key)
+    $openai = OpenAI::make('<your-key-here>')
         ->audio()
         ->createSpeech()
         ->setModel(TTSModel::TTS_1)
