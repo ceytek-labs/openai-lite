@@ -12,6 +12,8 @@ class CreateImageCompletion
 
     private Model $model;
 
+    private string $prompt;
+
     private int $maxTokens = 300;
 
     private \stdClass $response;
@@ -29,6 +31,13 @@ class CreateImageCompletion
     public function setModel(Model $model): self
     {
         $this->model = $model;
+
+        return $this;
+    }
+
+    public function setPrompt(string $prompt): self
+    {
+        $this->prompt = $prompt;
 
         return $this;
     }
@@ -52,6 +61,15 @@ class CreateImageCompletion
 
         $fields['model'] = $this->model->value;
 
+        if (! isset($this->prompt)) {
+            throw new \Exception('Please set your prompt');
+        }
+
+        $fields['messages'][] = [
+            'role' => 'system',
+            'content' => $this->prompt,
+        ];
+
         if (is_null($text)) {
             throw new \Exception('Please insert your text');
         }
@@ -60,22 +78,20 @@ class CreateImageCompletion
             throw new \Exception('Please insert your image url');
         }
 
-        $fields['messages'] = [
-            [
-                'role' => 'user',
-                'content' => [
-                    [
-                        'type' => 'text',
-                        'text' => $text,
-                    ],
-                    [
-                        'type' => 'image_url',
-                        'image_url' => [
-                            'url' => $imageUrl,
-                        ],
+        $fields['messages'][] = [
+            'role' => 'user',
+            'content' => [
+                [
+                    'type' => 'text',
+                    'text' => $text,
+                ],
+                [
+                    'type' => 'image_url',
+                    'image_url' => [
+                        'url' => $imageUrl,
                     ],
                 ],
-            ]
+            ],
         ];
 
         $curl = curl_init();

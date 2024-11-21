@@ -50,6 +50,15 @@ class CreateCompletion
 
         $fields['model'] = $this->model->value;
 
+        if (! isset($this->prompt)) {
+            throw new \Exception('Please set your prompt');
+        }
+
+        $fields['messages'][] = [
+            'role' => 'system',
+            'content' => $this->prompt,
+        ];
+
         if (is_null($content)) {
             throw new \Exception('Please insert your content');
         }
@@ -58,13 +67,6 @@ class CreateCompletion
             'role' => 'user',
             'content' => $content,
         ];
-
-        if (isset($this->prompt)) {
-            $fields['messages'][] = [
-                'role' => 'system',
-                'content' => $this->prompt,
-            ];
-        }
 
         $curl = curl_init();
 
